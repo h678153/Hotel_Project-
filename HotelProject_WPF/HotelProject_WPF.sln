@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelProject_WPF", "HotelProject_WPF.csproj", "{AFDA038A-349A-4193-91F9-FE0AD6DFC446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelLibrary", "..\HotelLibrary\HotelLibrary.csproj", "{BE8D3DFE-E58D-42EA-B1A6-08C5F2AC5B44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFDA038A-349A-4193-91F9-FE0AD6DFC446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFDA038A-349A-4193-91F9-FE0AD6DFC446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFDA038A-349A-4193-91F9-FE0AD6DFC446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFDA038A-349A-4193-91F9-FE0AD6DFC446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE8D3DFE-E58D-42EA-B1A6-08C5F2AC5B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE8D3DFE-E58D-42EA-B1A6-08C5F2AC5B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE8D3DFE-E58D-42EA-B1A6-08C5F2AC5B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE8D3DFE-E58D-42EA-B1A6-08C5F2AC5B44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
