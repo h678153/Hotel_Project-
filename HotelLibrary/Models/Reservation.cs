@@ -14,5 +14,6 @@ public partial class Reservation
     public Room ReservedRoom { get; set; } = null!;
     public Customer Customer { get; set; } = null!;
 
-
+    public DateOnly InDate { get; set; }
+    public DateOnly OutDate { get; set; }
 }

@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelProject_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
     <Grid>
-
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Height="70">
+                <Button Name="checkin" Content="Check in / check out" Width="300" FontSize="22" Click="checkin_Click"/>
+                <Button Name="viewReservations" Content="View reservations" FontSize="22" Width="300" Click="viewReservations_Click"/>
+                <Button Name="requestMaintenance" Content="Request roomservice or maintenance" Width="600" FontSize="22" Click="requestMaintenance_Click"/>
+            </StackPanel>
+            <ListView Name="roomList" ItemsSource="{Binding}">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Roomnumber}" Header="Roomnumber" Width="150"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Roomtype}" Header="Roomtype" Width="150"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=IsAvailable}" Header="Is Available" Width="150"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+                      
+        </StackPanel>
     </Grid>
 </Window>

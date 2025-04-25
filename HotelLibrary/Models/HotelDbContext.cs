@@ -40,6 +40,9 @@ public partial class HotelDbContext : DbContext
 
             entity.Property(e => e.IsAvailable)
             .HasColumnName("isavailable");
+
+            entity.Property(e => e.Cleaned)
+            .HasColumnName("cleaned");
         });
 
         modelBuilder.Entity<Reservation>(entity =>
@@ -62,8 +65,11 @@ public partial class HotelDbContext : DbContext
             entity.HasOne(e => e.Customer)
             .WithMany(c => c.Reservations)
             .HasForeignKey(e => e.CustomerId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.ClientSetNull)
             .HasConstraintName("fk_customer");
+
+            entity.Property(e => e.InDate).HasColumnName("inDate");
+            entity.Property(e => e.OutDate).HasColumnName("outDate");
 
         });
 
