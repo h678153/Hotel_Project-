@@ -77,11 +77,16 @@ namespace HotelProject_WPF
 
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show($"Error: {ex.Message}");
             }
+            finally
+            {
+                reservationList.Items.Refresh();
+                
+            }
         }
-
         private void addRoomButton_Click(object sender, RoutedEventArgs e)
         {
             try

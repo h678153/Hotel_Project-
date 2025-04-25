@@ -39,7 +39,11 @@ namespace HotelProject_WPF
 
             if (r != null)
             {
-
+                ReservationWindow rw = new()
+                {
+                    dx = Dx
+                };
+                rw.Show();
             }
         }
 
@@ -59,7 +63,16 @@ namespace HotelProject_WPF
 
         private void requestMaintenance_Click(object sender, RoutedEventArgs e)
         {
+            MaintenanceWindow mw = new()
+            {
+                Dx = Dx
+            };
+            mw.Show();
+        }
 
+        private void refresh_Click(object sender, RoutedEventArgs e)
+        {
+            roomList.Items.Refresh();
         }
     }
 }

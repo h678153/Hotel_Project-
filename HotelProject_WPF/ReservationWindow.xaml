@@ -10,11 +10,11 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Border Width ="3" Height="3"/>
-                <TextBlock Name="idtext" Text="Reservation ID" Width="100" />
+                <TextBlock Name="idtext" Text="Reservation ID" Width="100" HorizontalAlignment="Left"/>
                 <Border Width="3"/>
-                <TextBlock Name="RoomnumberText" Text="Roomnumber" Width="100"/>
+                <TextBlock Name="RoomnumberText" Text="Roomnumber" Width="100" HorizontalAlignment="Left"/>
                 <Border Width="3"/>
-                <TextBlock Name="CustomeridText" Text="Customer ID" Width="100"/>
+                <TextBlock Name="CustomeridText" Text="Customer ID" Width="100" HorizontalAlignment="Left"/>
                 <Border Width="3"/>
             <!--    <TextBlock Name="RoomText" Text="Room" Width="100"/>
                 <Border Width="3"/>
@@ -50,7 +50,7 @@
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=ReservationId}" Header="Reservation ID" Width="150"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=ReservationId}" Header="Reservation ID" Width="150" />
                             <GridViewColumn DisplayMemberBinding="{Binding Path=RoomNumber}" Header="Room number" Width="150"/>
                             <GridViewColumn DisplayMemberBinding="{Binding Path=CustomerId}" Header="Customer ID" Width="150"/>
                             <GridViewColumn DisplayMemberBinding="{Binding Path=InDate}" Header="From" Width="150"/>
