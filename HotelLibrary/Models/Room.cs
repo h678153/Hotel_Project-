@@ -12,5 +12,5 @@ public partial class Room
     public string Roomtype { get; set; } = null!; //small - 1 bed, medium - 2 beds, large - 4 beds
     public bool IsAvailable { get; set; } = true;
 
-    public bool Cleaned { get; set; }
+    public bool Cleaned { get; set; } = true;
 }

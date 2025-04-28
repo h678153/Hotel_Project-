@@ -17,8 +17,12 @@ public class Class1
         {
             return false; 
         }
+
+        int newCustomerId = context.Customers.Max(c => c.CustomerId) + 1;
+
         var newCustomer = new Customer
         {
+            CustomerId = newCustomerId,
             CustomerName = username,
             CustomerPassword = password
         };

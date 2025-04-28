@@ -1,0 +1,28 @@
+﻿@model IEnumerable<HotelLibrary.Models.Customer>
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form asp-action="Login" method="post">
+    <div class="form-group">
+        <label for="CustomerName">Customer Name:</label>
+        <input type="text" id="CustomerName" name="CustomerName" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="CustomerPassword">Password:</label>
+        <input type="password" id="CustomerPassword" name="CustomerPassword" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+@if (ViewData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger mt-3">
+        @ViewData["ErrorMessage"]
+    </div>
+}

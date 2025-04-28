@@ -152,5 +152,89 @@ namespace HotelWebAppMVC.Controllers
         {
             return _context.Rooms.Any(e => e.Roomnumber == id);
         }
+        public IActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Search(string Roomtype, DateTime from, DateTime to)
+        {
+            var fromDate = DateOnly.FromDateTime(from);
+            var toDate = DateOnly.FromDateTime(to);
+
+            var reservedRoomNumbers = _context.Reservations
+                .Where(r =>
+                    (fromDate <= r.OutDate) && (toDate >= r.InDate)
+                )
+                .Select(r => r.RoomNumber)
+                .Distinct()
+                .ToList();
+
+            var availableRoomsFiltered = _context.Rooms
+                .Where(room =>
+                    room.IsAvailable &&                
+                    room.Cleaned &&                    
+                    (string.IsNullOrEmpty(Roomtype) || room.Roomtype.ToLower() == Roomtype.ToLower()) && 
+                    !reservedRoomNumbers.Contains(room.Roomnumber) 
+                )
+                .ToList();
+
+            
+            Console.WriteLine($"Rooms found: {availableRoomsFiltered.Count}");
+
+            return View("Index", availableRoomsFiltered);
+        }
+
+        public IActionResult Reserve(int id)  // `id` corresponds to `Roomnumber`
+        {
+            var room = _context.Rooms.FirstOrDefault(r => r.Roomnumber == id);
+            if (room == null)
+            {
+                // Handle the case where the room is not found
+                return RedirectToAction("Index");  // or some other appropriate action
+            }
+
+            return View(room);  // Pass the room details to the Reserve view
+        }
+
+
+
+
+        [HttpPost]
+        public IActionResult ConfirmReservation(int roomNumber, int customerId, DateTime from, DateTime to)
+        {
+            var customerIdcheck = HttpContext.Session.GetInt32("CustomerId");
+
+            int reservationid = _context.Reservations.Max(r => r.ReservationId) + 1;
+
+            Room room = _context.Rooms.FirstOrDefault(r => r.Roomnumber == roomNumber);
+
+            if (customerIdcheck == 0)
+            {
+                return RedirectToAction("Index", "Customers");
+            }
+
+            var fromDate = DateOnly.FromDateTime(from);
+            var toDate = DateOnly.FromDateTime(to);
+
+            var reservation = new Reservation
+            {
+                ReservationId = reservationid,
+                RoomNumber = roomNumber,
+                CustomerId = customerId,
+                ReservedRoom = room,
+                InDate = fromDate,
+                OutDate = toDate
+            };
+
+            _context.Reservations.Add(reservation);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index"); 
+        }
+
+
+
     }
 }

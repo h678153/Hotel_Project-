@@ -1,0 +1,23 @@
+﻿@model HotelLibrary.Models.Room
+
+@{
+    ViewData["Title"] = "Reserve Room";
+}
+
+<h1>Reserve Room</h1>
+
+<h2>Room: @Model.Roomnumber (@Model.Roomtype)</h2>
+
+<form asp-action="ConfirmReservation" method="post">
+    <input type="hidden" name="roomNumber" value="@Model.Roomnumber" />
+    <input type="hidden" name="customerId" value="@Context.Session.GetInt32("CustomerId")" />
+
+    <input type="hidden" name="from"
+           value="@(TempData["FromDate"] is DateOnly fromDate ? fromDate.ToString("yyyy-MM-dd") : string.Empty)" />
+    <input type="hidden" name="to"
+           value="@(TempData["ToDate"] is DateOnly toDate ? toDate.ToString("yyyy-MM-dd") : string.Empty)" />
+
+    <div>
+        <button type="submit">Confirm Reservation</button>
+    </div>
+</form>

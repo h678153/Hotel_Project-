@@ -86,7 +86,7 @@ public partial class HotelDbContext : DbContext
             .HasColumnName("customername");
 
             entity.Property(e => e.CustomerPassword)
-            .HasColumnName("password");
+            .HasColumnName("customerpassword");
         });
 
 

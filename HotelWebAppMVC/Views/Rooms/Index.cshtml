@@ -1,15 +1,42 @@
 ﻿@model IEnumerable<HotelLibrary.Models.Room>
-
+<!-- Declares that this view expects a list (IEnumerable) of Room objects from the controller -->
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Available rooms";
 }
+<!-- Sets the page title that can be used in the layout (_Layout.cshtml) -->
 
-<h1>Index</h1>
+<h1>List of available rooms</h1>
+<!-- Displays the main heading on the page -->
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<form asp-action="Search" method="post">
+    <div>
+        <label for="Roomtype">Room type:</label>
+        <select name="Roomtype" id="Roomtype">
+            <option value="">-- Any --</option>
+            <option value="small">Small (1 bed)</option>
+            <option value="medium">Medium (2 beds)</option>
+            <option value="large">Large (4 beds)</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="from">From date:</label>
+        <input type="date" name="from" id="from" required />
+    </div>
+
+    <div>
+        <label for="to">To date:</label>
+        <input type="date" name="to" id="to" required />
+    </div>
+
+    <div>
+        <button type="submit">Search</button>
+    </div>
+</form>
+
 <table class="table">
+    <!-- Begins a table with Bootstrap styling -->
+
     <thead>
         <tr>
             <th>
@@ -18,30 +45,36 @@
             <th>
                 @Html.DisplayNameFor(model => model.IsAvailable)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cleaned)
-            </th>
+
             <th></th>
         </tr>
     </thead>
+    <!-- Table header row showing column names for Roomtype, IsAvailable, and Cleaned -->
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Roomtype)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAvailable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cleaned)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Roomnumber">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Roomnumber">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Roomnumber">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <!-- Loops through each Room item in the model -->
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Roomtype)
+                </td>
+                <!-- Displays the Roomtype value -->
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAvailable)
+                </td>
+                <!-- Displays whether the room is available (true/false) -->
+
+                <td>
+
+					<a asp-action="Reserve" asp-route-id="@item.Roomnumber">Reserve</a>
+                </td>
+                <!-- Links to Edit, Details, and Delete actions with Roomnumber as the route parameter -->
+            </tr>
+        }
     </tbody>
+    <!-- Ends the loop and the table body -->
 </table>
+<!-- Ends the table -->

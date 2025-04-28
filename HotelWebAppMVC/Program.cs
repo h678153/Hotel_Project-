@@ -15,7 +15,24 @@ namespace HotelWebAppMVC
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
             );
 
+            builder.Services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(4); // Set session timeout
+            });
+
             var app = builder.Build();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -23,6 +40,9 @@ namespace HotelWebAppMVC
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseRouting();
+
+            app.UseSession();
+
 
             app.UseAuthorization();
 
