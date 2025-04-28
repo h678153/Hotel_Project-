@@ -1,6 +1,8 @@
 using HotelWebApp.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using HotelLibrary;
+using HotelLibrary.Models;
 
 namespace HotelWebApp
 {
@@ -19,6 +21,8 @@ namespace HotelWebApp
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddRazorPages();
+
+            builder.Services.AddScoped<HotelDbContext>();
 
             var app = builder.Build();
 
