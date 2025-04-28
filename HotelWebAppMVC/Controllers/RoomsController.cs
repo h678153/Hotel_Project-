@@ -186,16 +186,16 @@ namespace HotelWebAppMVC.Controllers
             return View("Index", availableRoomsFiltered);
         }
 
-        public IActionResult Reserve(int id)  // `id` corresponds to `Roomnumber`
+        public IActionResult Reserve(int id)  
         {
             var room = _context.Rooms.FirstOrDefault(r => r.Roomnumber == id);
             if (room == null)
             {
-                // Handle the case where the room is not found
-                return RedirectToAction("Index");  // or some other appropriate action
+               
+                return RedirectToAction("Index");  
             }
 
-            return View(room);  // Pass the room details to the Reserve view
+            return View(room);  
         }
 
 
