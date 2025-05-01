@@ -16,26 +16,86 @@ public partial class Service : ContentPage
         Rooms = Dx.Rooms.Local.ToObservableCollection();
         Dx.Rooms.Load();
         ServicedListView.ItemsSource = Rooms;
+
+        Dx.Rooms.Local.CollectionChanged += Local_CollectionChanged;
     }
     private void ServicedButton_Clicked(object sender, EventArgs e)
     {
         Room? room = ServicedListView.SelectedItem as Room;
-        room.Serviced = true;
+
+        if (room == null)
+        {
+            DisplayAlert("Error", "Please select a room", "OK");
+            return;
+        }
+
+        if (room.Serviced == "New")
+        {
+            room.Serviced = "In progress";
+        }
+        else if (room.Serviced == "In progress")
+        {
+            room.Serviced = "Done";
+        }
+        else
+        {
+            room.Serviced = "New";
+        }
+
+
         try
         {
             Dx.Rooms.Update(room);
             Dx.SaveChanges();
+
         }
         catch (Exception ex)
         {
             DisplayAlert("Error", ex.Message, "OK");
         }
-        finally
+    }
+
+    private void ServicedListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        if (e.SelectedItem is Room selectedRoom)
         {
-            ObservableCollection<Room> updatedRooms;
-            updatedRooms = Dx.Rooms.Local.ToObservableCollection();
-            ServicedListView.ItemsSource = updatedRooms;
-            ServicedListView.SelectedItem = null;
+            NotesEditor.Text = selectedRoom.RoomNotes;
         }
+        else
+        {
+            NotesEditor.Text = string.Empty;
+        }
+    }
+
+    private void SaveNoteButton_Clicked(object sender, EventArgs e)
+    {
+        Room? room = ServicedListView.SelectedItem as Room;
+
+        if (room == null)
+        {
+            DisplayAlert("Error", "Please select a room", "OK");
+            return;
+        }
+
+        room.RoomNotes = NotesEditor.Text;
+
+        try
+        {
+            Dx.Rooms.Update(room);
+            Dx.SaveChanges();
+            DisplayAlert("Success", "Note saved successfully.", "OK");
+
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
+
+    private void Local_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        
+            ServicedListView.ItemsSource = Dx.Rooms.Local.ToObservableCollection();
+        
     }
 }

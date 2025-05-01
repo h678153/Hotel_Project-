@@ -174,7 +174,7 @@ namespace HotelWebAppMVC.Controllers
             var availableRoomsFiltered = _context.Rooms
                 .Where(room =>
                     room.IsAvailable &&                
-                    room.Cleaned &&                    
+                    (room.Cleaned=="Done") &&                    
                     (string.IsNullOrEmpty(Roomtype) || room.Roomtype.ToLower() == Roomtype.ToLower()) && 
                     !reservedRoomNumbers.Contains(room.Roomnumber) 
                 )

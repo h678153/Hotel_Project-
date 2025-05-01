@@ -3,39 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MaintenanceMAUI.Cleaner"
              Title="Cleaner">
-    <VerticalStackLayout>
-        <Label 
-        Text="List of all rooms in need of maintenance"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
         <ListView x:Name="CleanedListView"
-      VerticalOptions="Center"
-      HorizontalOptions="Center"
-      WidthRequest="300">
+                  Grid.Column="0"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="Center"
+                  WidthRequest="300"
+                  ItemSelected="CleanedListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center"
-                         Spacing="30"   
-                        Padding="10">
+                                     HorizontalOptions="Center"
+                                     Spacing="30"   
+                                     Padding="10">
                             <Label Text="{Binding Roomnumber}"
-                       HorizontalOptions="StartAndExpand"
-                       FontSize="18" />
-
+                                   HorizontalOptions="StartAndExpand"
+                                   FontSize="18" />
                             <Label Text="{Binding Cleaned}"
-                       HorizontalOptions="End"
-                       FontSize="18" />
+                                   HorizontalOptions="End"
+                                   FontSize="18" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Mark as cleaned"
-            x:Name="CleanedButton"
-            Clicked="CleanedButton_Clicked"
-            FontSize="24"
-            HeightRequest="70"
-            WidthRequest="250" />
-    </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Column="1"
+                             HorizontalOptions="Start"
+                             VerticalOptions="Center"
+                             Spacing="20">
+            <Label Text="Room Notes:"
+                   FontSize="16"
+                   HorizontalOptions="Center" />
+
+            <Editor x:Name="NotesEditor"
+                    Placeholder="Enter notes for selected room..."
+                    AutoSize="TextChanges"
+                    HeightRequest="100"
+                    WidthRequest="300"
+                    Margin="10" />
+
+            <Button Text="Save Note"
+                    x:Name="SaveNoteButton"
+                    Clicked="SaveNoteButton_Clicked"
+                    FontSize="20"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    HorizontalOptions="Center" />
+            <Button Text="Change cleaned status"
+                    x:Name="CleanedButton"
+                    Clicked="CleanedButton_Clicked"
+                    FontSize="24"
+                    HeightRequest="70"
+                    WidthRequest="250"
+                    HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

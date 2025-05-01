@@ -40,7 +40,7 @@ namespace HotelProject_WPF
         {
             Room? room = roomList.SelectedItem as Room;
 
-            room.Cleaned = false;
+            room.Cleaned = "No";
 
             try
             {

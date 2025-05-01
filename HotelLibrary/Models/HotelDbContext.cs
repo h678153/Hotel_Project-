@@ -49,6 +49,9 @@ public partial class HotelDbContext : DbContext
 
             entity.Property(e => e.Serviced)
             .HasColumnName("serviced");
+
+            entity.Property(e => e.RoomNotes)
+            .HasColumnName("roomnotes");
         });
 
         modelBuilder.Entity<Reservation>(entity =>
