@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaintenanceMAUI.Cleaner"
+             Title="Cleaner">
+    <VerticalStackLayout>
+        <Label 
+        Text="List of all rooms in need of maintenance"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+        <ListView x:Name="CleanedListView"
+      VerticalOptions="Center"
+      HorizontalOptions="Center"
+      WidthRequest="300">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Spacing="30"   
+                        Padding="10">
+                            <Label Text="{Binding Roomnumber}"
+                       HorizontalOptions="StartAndExpand"
+                       FontSize="18" />
+
+                            <Label Text="{Binding Cleaned}"
+                       HorizontalOptions="End"
+                       FontSize="18" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Mark as cleaned"
+            x:Name="CleanedButton"
+            Clicked="CleanedButton_Clicked"
+            FontSize="24"
+            HeightRequest="70"
+            WidthRequest="250" />
+    </VerticalStackLayout>
+</ContentPage>

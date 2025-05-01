@@ -43,6 +43,12 @@ public partial class HotelDbContext : DbContext
 
             entity.Property(e => e.Cleaned)
             .HasColumnName("cleaned");
+
+            entity.Property(e => e.Maintained)
+            .HasColumnName("maintained");
+
+            entity.Property(e => e.Serviced)
+            .HasColumnName("serviced");
         });
 
         modelBuilder.Entity<Reservation>(entity =>

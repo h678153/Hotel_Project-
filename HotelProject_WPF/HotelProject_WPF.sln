@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelWebApp", "..\HotelWebA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelWebAppMVC", "..\HotelWebAppMVC\HotelWebAppMVC.csproj", "{CABC5D38-7E13-473C-87CF-59A230DAD104}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintenanceMAUI", "..\MaintenanceMAUI\MaintenanceMAUI.csproj", "{1F11F153-8E1B-4E29-8F98-F1F3C8282DED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,11 @@ Global
 		{CABC5D38-7E13-473C-87CF-59A230DAD104}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CABC5D38-7E13-473C-87CF-59A230DAD104}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CABC5D38-7E13-473C-87CF-59A230DAD104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F11F153-8E1B-4E29-8F98-F1F3C8282DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F11F153-8E1B-4E29-8F98-F1F3C8282DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F11F153-8E1B-4E29-8F98-F1F3C8282DED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1F11F153-8E1B-4E29-8F98-F1F3C8282DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F11F153-8E1B-4E29-8F98-F1F3C8282DED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

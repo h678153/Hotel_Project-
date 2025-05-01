@@ -13,4 +13,6 @@ public partial class Room
     public bool IsAvailable { get; set; } = true;
 
     public bool Cleaned { get; set; } = true;
+    public bool Maintained { get; set; } = true;
+    public bool Serviced { get; set; } = true;
 }

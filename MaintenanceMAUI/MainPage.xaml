@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaintenanceMAUI.MainPage">
+
+    <VerticalStackLayout Padding="30" Spacing="20"
+                         VerticalOptions="Center" HorizontalOptions="Center">
+
+        <Button Text="Maintenance"
+                x:Name="MaintenanceButton"
+                Clicked="MaintenanceButton_Clicked"
+                FontSize="24"
+                HeightRequest="70"
+                WidthRequest="250" />
+
+        <Button Text="Cleaning"
+                x:Name="CleaningButton"
+                Clicked="CleaningButton_Clicked"
+                FontSize="24"
+                HeightRequest="70"
+                WidthRequest="250" />
+
+        <Button Text="Service"
+                x:Name="ServiceButton"
+                Clicked="ServiceButton_Clicked"
+                FontSize="24"
+                HeightRequest="70"
+                WidthRequest="250" />
+
+    </VerticalStackLayout>
+
+</ContentPage>
