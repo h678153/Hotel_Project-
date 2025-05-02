@@ -21,7 +21,9 @@
                         <GridView.Columns>
                             <GridViewColumn DisplayMemberBinding="{Binding Path=Roomnumber}" Header="Roomnumber" Width="150"/>
                             <GridViewColumn DisplayMemberBinding="{Binding Path=Roomtype}" Header="Roomtype" Width="150"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=IsAvailable}" Header="Is Available" Width="150"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=IsAvailable}" Header="Available" Width="150"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cleaned}" Header="Clean" Width="150"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=RoomNotes}" Header="Room notes" Width="150"/>
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>

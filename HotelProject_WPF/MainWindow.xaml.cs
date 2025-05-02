@@ -31,6 +31,8 @@ namespace HotelProject_WPF
             roomList.DataContext = Rooms.OrderBy(r => r.Roomnumber);
 
             roomList.MouseDoubleClick += roomList_MouseDoubleClick;
+
+            Dx.Rooms.Local.CollectionChanged += Local_CollectionChanged;    
         }
 
         private void roomList_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -58,9 +60,31 @@ namespace HotelProject_WPF
 
         private void checkin_Click(object sender, RoutedEventArgs e)
         {
+            Room? room = roomList.SelectedItem as Room;
 
+            if (room != null)
+            {
+                try
+                {
+                    if(room.IsAvailable == false) room.IsAvailable = true;
+                     else room.IsAvailable = false;
+                    
+                    Dx.Rooms.Update(room);
+                    Dx.SaveChanges();
+
+                    if (room.IsAvailable == true) MessageBox.Show("Room checked out successfully.");
+                    else MessageBox.Show("Room checked in successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    refresh_Click(sender, e);
+                }
+            }
         }
-
         private void requestMaintenance_Click(object sender, RoutedEventArgs e)
         {
             MaintenanceWindow mw = new()
@@ -72,7 +96,14 @@ namespace HotelProject_WPF
 
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
-            roomList.Items.Refresh();
+            Dx.Rooms.Load();
+            roomList.DataContext = Rooms.OrderBy(r => r.Roomnumber);
+        }
+
+        private void Local_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            Dx.Rooms.Load();
+            roomList.DataContext = Rooms.OrderBy(r => r.Roomnumber);
         }
     }
 }

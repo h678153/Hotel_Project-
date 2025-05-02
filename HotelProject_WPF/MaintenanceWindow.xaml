@@ -10,20 +10,25 @@
 
     <Grid>
         <DockPanel VerticalAlignment="Top" Height="30">
-            <Button Name="maintenanceButton" Content="Needs maintenance" Click="maintenanceButton_Click"/>
+            <Button Name="cleaniingButton" Content="Needs cleaning" Click="cleaningButton_Click" Width="266"/>
+            <Button Name="roomServiceButton" Content="Needs room service" Click="roomServiceButton_Click" Width="267"/>
+            <Button Name="maintenanceButton" Content="Needs maintenance" Click="maintenanceButton_Click" Width="266"/>
         </DockPanel>
-        <ListView Name="roomList" ItemsSource="{Binding}" Margin="0,30,0,0">
-                <ListView.View>
-                    <GridView>
-                        <GridView.Columns>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Roomnumber}" Header="Roomnumber" Width="150"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Roomtype}" Header="Roomtype" Width="150"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=IsAvailable}" Header="Is Available" Width="150"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cleaned}" Header="Is Clean" Width="150"/>
-                        </GridView.Columns>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                <ListView Name="roomList" ItemsSource="{Binding}" Margin="0,30,0,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Roomnumber}" Header="Roomnumber" Width="150"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Roomtype}" Header="Roomtype" Width="150"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=IsAvailable}" Header="Is Available" Width="70"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Cleaned}" Header="Is Clean" Width="70"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Serviced}" Header="Serviced" Width="70"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Maintained}" Header="Maintained" Width="70"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=RoomNotes}" Header="Room notes" Width="200"/>
+                    </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
         
     </Grid>
 </Window>
